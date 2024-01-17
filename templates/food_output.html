@@ -1,0 +1,65 @@
+{% extends "base.html" %} 
+{% block title %} Output for Food & Beverages {% endblock title %} 
+{% block body %}
+
+{% if recom %}
+<h1 class="text-center">Have you tried this ?</h1>
+<div class="container-fluid mx-3">
+    <div class="row justify-content-center">
+        <div class="card px-0" style="width: 30rem;">
+            <div class="card-body" style="background-image: url('/static/container2.jpg');">
+                <h3 class="card-title fw-bold" style="height: 4rem;">{{recom.name}}</h3>
+                <h5 class="card-text" style="height: 5rem;"><b>Address</b> : {{recom.address}}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-secondary"><b>Rating</b> : {{recom.rating}} ★</li>
+                <li class="list-group-item bg-secondary"><b>Contact Number</b> : {{recom.contact}}</li>
+                <li class="list-group-item bg-secondary"><b>Order</b> : {{recom.order}}</li>
+            </ul>
+            <div class="card-body bg-danger">
+                <span><b>Openeing Time</b> : {{recom.openingtime}} |</span>
+                <span><b>Closing Time</b> : {{recom.closingtime}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if foods %}
+<h1 class="text-center">Food and Beverages List 🍽</h1>
+<div class="container-fluid mx-3">
+    <div class="row">
+    {% for food in foods %}
+        <div class="col-md-4 my-3">
+            <div class="card" style="width: 30rem;">
+                <!-- <img src="https://source.unsplash.com/1200x1200/?food" class="card-img-top"> -->
+                <div class="card-body" style="background-image: url('/static/container2.jpg');">
+                    <h3 class="card-title fw-bold" style="height: 4rem;">{{food.name}}</h3>
+                    <h5 class="card-text" style="height: 5rem;"><b>Address</b> : {{food.address}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-secondary"><b>Rating</b> : {{food.rating}} ★</li>
+                    <li class="list-group-item bg-secondary"><b>Contact Number</b> : {{food.contact}}</li>
+                    <li class="list-group-item bg-secondary"><b>Order</b> : {{food.order}}</li>
+                </ul>
+                <div class="card-body bg-danger">
+                    <span><b>Openeing Time</b> : {{food.openingtime}} |</span>
+                    <span><b>Closing Time</b> : {{food.closingtime}}</span>
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 and not forloop.last %}
+            </div><div class="row">
+        {% endif %}
+    {% endfor %}
+    </div>
+</div>
+{% else %}
+    <h1 class="text-center">Food and Beverages List 🍽</h1>
+    <h1 class="mx-5">Error: No data to display.</h1>
+    <h1 class="mx-5">Either The Data is not available for the selected options,</h1>
+    <h1 class="mx-5">Or You have not selected any option</h1>
+    <h1 class="mx-5">Sorry for the Inconvinience!!!</h1>
+{% endif %}
+
+{% endblock body%}

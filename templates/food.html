@@ -1,0 +1,38 @@
+{% extends "base.html" %} 
+{% block title %} Food & Beverages {% endblock title %} 
+{% block body %}
+
+<div class="container py-4">
+    <h1>Food & Beverages</h1>
+    <form method="POST" action="/food_output/">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="area" class="my-2 form-label"><h3>Area</h3></label>
+            <select style="width: 50%;" class="form-select form-select-lg mb-3 bg-secondary" name="area" id="area">
+                <option selected>Select Area</option>
+                <option value="Cidco Colony">Cidco Colony</option>
+                <option value="Dwarka Corner">Dwarka Corner</option>
+                <option value="Gangapur">Gangapur</option>
+                <option value="Nashik Main Road">Nashik Main Road</option>
+                <option value="Nashik Road">Nashik Road</option>
+                <option value="Indira Nagar">Indira Nagar</option>
+                <option value="Partherdi Phata">Partherdi Phata</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="subcategory" class="my-2 form-label"><h3>Subcategory</h3></label>
+            <select style="width: 50%;" class="form-select form-select-lg mb-3 bg-secondary" name="subcategory" id="subcategory">
+                <option selected>Select Subcategory</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Cafe">Cafeshop</option>
+                <option value="Ice Cream Parlour">Ice Cream Parlour</option>
+                <option value="Juice Center">Juice Center</option>
+                <option value="Tea and Snacks">Tea and Snacks</option>
+                <option value="Bakery">Bakery Shop</option>
+                <option value="Cloud Kitchen">Cloud Kitchen</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg my-2">Submit</button>
+    </form>
+</div>
+{% endblock body%}

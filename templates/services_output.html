@@ -1,0 +1,41 @@
+{% extends "base.html" %} 
+{% block title %} Output for Services {% endblock title %} 
+{% block body %}
+
+{% if services %}
+<h1 class="text-center">Services List</h1>
+<div class="container-fluid mx-3">
+    <div class="row">
+    {% for service in services %}
+        <div class="col-md-4 my-3">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body" style="background-image: url('/static/container2.jpg');">
+                    <h3 class="card-title fw-bold" style="height: 4rem;">{{service.name}}</h3>
+                    <h5 class="card-text" style="height: 5rem;"><b>Address</b> : {{service.address}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-secondary"><b>Rating</b> : {{service.rating}} ★</li>
+                    <li class="list-group-item bg-secondary"><b>Contact Number</b> : {{service.contact}}</li>
+                    <li class="list-group-item bg-secondary"><b>Order</b> : {{service.order}}</li>
+                </ul>
+                <div class="card-body bg-danger">
+                    <span><b>Openeing Time</b> : {{service.openingtime}} |</span>
+                    <span><b>Closing Time</b> : {{service.closingtime}}</span>
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 and not forloop.last %}
+            </div><div class="row">
+        {% endif %}
+    {% endfor %}
+    </div>
+</div>
+{% else %}
+    <h1 class="text-center">Services List</h1>
+    <h1 class="mx-5">Error: No data to display.</h1>
+    <h1 class="mx-5">Either The Data is not available for the selected options,</h1>
+    <h1 class="mx-5">Or You have not selected any option</h1>
+    <h1 class="mx-5">Sorry for the Inconvinience!!!</h1>
+{% endif %}
+
+{% endblock body%}

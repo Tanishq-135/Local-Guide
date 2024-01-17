@@ -1,0 +1,22 @@
+{% extends "base.html" %} 
+{% block title %} About {% endblock title %} 
+{% block body %}
+
+<div class="container m-auto justify-content-center" style="width: 100 rem;">
+    <h2>Sign Up</h2>
+    <form method="post" action="/sign_up/">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+        <a href="/sign_in">Already have an account ? Sign In</a>
+    </form>
+</div>
+
+{% endblock body %}

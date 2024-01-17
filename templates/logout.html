@@ -1,0 +1,15 @@
+{% extends "base.html" %} 
+{% block title %} About {% endblock title %} 
+{% block body %}
+
+<div class="container m-auto justify-content-center" style="width: 100 rem;">
+    <h2>Log Out</h2>
+    <form method="post" action="/logout/">
+        {% csrf_token %}
+        <label for="logout">Are you Sure ?</label>
+        <!-- <input type="button" value="Log out" name="logout" class="btn btn-danger"> -->
+        <button type="submit" value="logout" class="btn btn-danger">Log out</button>
+    </form>
+</div>
+
+{% endblock body %}
